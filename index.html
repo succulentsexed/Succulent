@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:visited {
+            color: #00CBF9;
+        }
+        
+        a:hover {
+            color: #EC7C15;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: row;
+            flex-flow: wrap;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: "Open Sans";
+            background-color: #83CCCE;
+            z-index: 0;
+        }
+        
+        #head {
+            color: white;
+            font-family: 'Avenir';
+            font-weight: bold;
+            font-size: 4em;
+            z-index: 0;
+        }
+        
+        #update {
+            margin: 10px;
+            margin-left: 0px;
+            margin-top: 15px;
+            z-index: 0;
+            font-size: 1.7em;
+            background-color: #F79C48;
+            border: none;
+            color: white;
+            padding: 15px;
+             padding-right: 40px;
+               padding-left: 40px;
+             border-radius:7px;
+        }
+        
+        @media only screen and (max-width: 800px) {
+           body {
+            display: flex;
+            flex-direction: column !important;
+            flex-flow: wrap;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #83CCCE;
+            z-index: 0;
+        }
+           
+            #subtext {
+                font-size: 3em !important;
+            }
+            #head {
+                font-size: 4em !important;
+            }
+            #update {
+                margin: 10px;
+                margin-left: 0px;
+                margin-top: 10px;
+                z-index: 0;
+                font-size: 2.4em !important;
+                background-color: #F79C48;
+                border: none;
+                color: white;
+                padding: 20px;
+                border-radius:13px;
+            }
+            
+            #copy {width:80% !important;
+                
+            }
+            #image {width:87% !important;
+                
+            }
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+
+    <div id ="copy" style=" width:30%;">
+        <div id="head">Sex Ed for Millenials</div>
+        <div id="subtext" style=" font-size: 1.4em;  margin-top:10px;">Learn about sexual health with GIFs </div>
+
+        <a href="https://lemonaid.typeform.com/to/PBbQuW"><button id="update">Stay Updated</button></a>
+
+
+    </div>
+
+    <div id="image" style="width:30%">
+        <img src="./app2.png">
+    </div>
+</body>
+
+</html>
