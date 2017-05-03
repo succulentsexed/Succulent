@@ -17,7 +17,7 @@
             color: #EC7C15;
         }
         
-        body {
+        #container {
             display: flex;
             flex-direction: row;
             flex-flow: wrap;
@@ -29,6 +29,10 @@
             background-color: #83CCCE;
             z-index: 0;
         }
+        
+        body{color: white;
+            font-family: "Open Sans";
+            background-color: #83CCCE;}
         
         #head {
             color: white;
@@ -101,8 +105,8 @@
 </head>
 
 <body>
-
-
+<div><img style =" height: 50px; margin:auto" src="./logo.png"> </div>
+<div id="container">
     <div id ="copy" style=" width:30%;">
         <div id="head">Sex Ed for Millenials</div>
         <div id="subtext" style=" font-size: 1.4em;  margin-top:10px;">Learn about sexual health with GIFs </div>
@@ -114,6 +118,8 @@
 
     <div id="image" style="width:30%">
         <img src="./app.png">
+    </div>
+    
     </div>
 </body>
 

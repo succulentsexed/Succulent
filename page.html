@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js">
+  </script>
+
+<head>
+
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #83CCCE;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    p {
+      color: white !important;
+      font-weight: bold !important;
+    }
+    
+    .block {
+      margin: 20px;
+      padding: 15px;
+      /*box-shadow: 2px 1px 1px gray;*/
+      background-color: #F79C48;
+      color: white;
+      border-radius: 10px;
+      max-width: 500px;
+      text-align: center;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+    
+    input[type='checkbox'] {
+      transform: scale(3);
+    }
+    
+    iframe {
+      border-radius: 5px
+    }
+    
+    button {
+      width: 150px;
+      height: 40px;
+      border: none;
+      margin: 10px;
+      background-color: #9B51E0;
+      border-radius: 40px;
+      color: white;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #8731D7;
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    var app = new Vue({
+      el: '#app1',
+      data: {
+        tracker: 0,
+        page: [
+          {
+            content: 'The Vagina.',
+            paragraph: 'The vagina is badass-- it was the first 3D printer and is a hub for sensation.You may or may not have one, but regardless it will be important for you to learn especially if you plan on having sex. '
+          },
+
+          {
+            content: 'The Clit.',
+            paragraph: 'The clitoris, the “clit”, the “bean”-- this is the pleasure center for females as it is the most sensitive part of female body.'
+          },
+
+        ],
+
+
+      },
+
+    })
+  </script>
+
+
+
+</head>
+
+<body>
+  <center>
+  <div id="app1" v-bind:style="{display: 'block'}">
+    
+      <div class="block"  v-for="(item, index) in page">
+        <div class="wrap">
+          <div class="btn"><i class="icon-ok"></i>
+          </div>
+          <div class="btn active"><i class="icon-ok"></i>
+          </div>
+        </div>
+
+        <p> {{ (index > 0) ? index +")" : "" }} {{ item.content }} </p>
+        <button id="back1" class="back" v-on:click="tracker--">Back</button>
+        <button id="next1" v-on:click="tracker++" class="next"> Next</button>
+      </div>
+      </center>
+  
+
+
+  </div>
+  
+
+
+  
+</body>
+
+</html>
