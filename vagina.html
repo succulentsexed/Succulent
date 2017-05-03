@@ -7,6 +7,8 @@ Copyright (c) 2017 by nicolekelner (http://jsbin.com/hiyeke/15/edit)
 Released under the MIT license: http://jsbin.mit-license.org
 -->
 <meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 <style id="jsbin-css">
 body {
     font-family: sans-serif;
@@ -76,10 +78,7 @@ button:hover{background-color: #FCD7B5;
   <center>
   <div class="block" >
     <div class="wrap">
-      <div class="btn"><i class="icon-ok"></i>
-      </div>
-      <div class="btn active"><i class="icon-ok"></i>
-      </div>
+      
     </div>
 
     <p>  {{ steps[tracker].content }}</p>
@@ -89,8 +88,8 @@ button:hover{background-color: #FCD7B5;
     <img  :src= "steps[tracker].url" style="margin:20px; width:404px; height:228px;">
     <p id="p"> {{ steps[tracker].p2 }}</p>
     </div>
-    <button id="back1"  v-on:click="tracker--" class="back">Back</button>
-    <button id="next1" v-on:click="tracker++" class="next"> Next</button>
+    <button id="back1"  class="btn" v-on:click="tracker--" class="back">Back</button>
+    <button id="next1" class="btn" v-on:click="tracker++" class="next"> Next</button>
  
     </center>
 </div>
