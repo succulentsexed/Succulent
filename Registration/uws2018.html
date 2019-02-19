@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <style>
+        img {
+            flex-basis: auto;
+            margin: 10px;
+        }
+
+        img:hover {
+            opacity: .7;
+            filter: alpha(opacity=70);
+            cursor: pointer;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        h3 {
+            font-size: 2em;
+            font-family: 'Quicksand', 'Open Sans', sans-serif;
+            margin: 8px;
+            padding-top: 20px;
+        }
+
+        h1 {
+            font-size: 1em;
+            font-family: 'Quicksand', 'Open Sans', sans-serif;
+            margin: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="app">
+ <div v-cloak>
+    <div v-if="!isMobile()">
+        <desktop>
+            <div style="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+                <img @click="beginnerShow()" style=" width:160px; height:70px" src="http://i.imgur.com/zUAKon1.png">
+                <img @click="begGirlCodeShow()" style=" width:160px; height:70px" src="http://i.imgur.com/iZ8VxGa.png">
+                <img @click="advGirlCodeShow()" style=" width:160px; height:70px" src="http://i.imgur.com/WDWKdPW.png">
+                <img @click="appCodeShow()" style=" width:160px; height:70px" src="http://i.imgur.com/j7TdAv1.png">
+                <img @click="advCodeShow()" style="  width:160px; height:70px" src="http://i.imgur.com/kqJ8Prp.png">
+             </div>
+            <div v-if="allClasses" style="width:100%; display: flex; flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+                <img @click="showAll()" style=" width:160px; height:70px" src="http://i.imgur.com/MehGazO.png">
+             </div>
+    <template v-if="begClasses">
+        <center> <h3 id="begClasses">Beginner Classes (co-ed)</h3>
+        <h1>Intro to Scratch. Co-ed ages 8-14.</h1></center>
+
+        <div style ="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+            <a id ="tuesday" href="https://thecodingspace.as.me/?appointmentType=4627311" target="_blank"><img src='http://i.imgur.com/DyLFQxu.png' width='280' height='230' ></a>
+            <a id ="thurs" href="https://thecodingspace.as.me/?appointmentType=4627383" target="_blank"><img src='http://i.imgur.com/N7HsrHs.png' width='280' height='230' ></a>
+            <a id = "fri" href="https://thecodingspace.as.me/?appointmentType=4627404" target="_blank"><img src='http://i.imgur.com/PRZ1JYn.png' width='280' height='230'  /></a>
+            <a id = "saturday" href="https://thecodingspace.as.me/?appointmentType=4627449" target="_blank"><img src='http://i.imgur.com/O6ByYWw.png' width='280' height='230'/></a>
+        </div>    
+    </template>
+
+    <template v-if="begGirlcodeClasses">
+         <center> <h3 id="begGirlcodeClasses">Beginner GirlCode Classes</h3>
+          <h1>Intro to Scratch. Girls ages 8-13.</h1>
+        </center>
+        <div style ="display: flex; flex-flow: wrap;flex-wrap: wrap; align-content: center;justify-content: center; flex-direction: row;">
+              <a id="mondaygc" href="https://thecodingspace.as.me/?appointmentType=4627152"  target="_blank"><img src='http://i.imgur.com/25GwOh7.png' width='280' height='230' /> </a>
+              <a id= "wednesdaygc" href="https://thecodingspace.as.me/?appointmentType=4627227"  target="_blank"><img src='http://i.imgur.com/nbyynk3.png' width='280' height='230' /> </a>
+        </div>
+    </template>
+    <template v-if="advGirlcodeClasses">
+         <center> <h3 id="advGirlcodeClasses">Advanced GirlCode Classes</h3>
+         <h1>Advanced Scratch, HTML, CSS, and Javascript. Girls ages 8-13. </h1></center>
+         <div style ="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+            <a id="thursdaygc" href="https://thecodingspace.as.me/?appointmentType=4627206"><img src='http://i.imgur.com/hrfYMT0.png' width='280' height='230'  /></a>
+            <a id= "wednesdaygc" href="https://thecodingspace.as.me/?appointmentType=4627263"><img src='http://i.imgur.com/NbFZaS3.png' width='280' height='230'/></a>
+        </div>    
+    </template>
+    <template v-if="advClasses">
+        <center> <h3 id="advClasses">Advanced Classes (co-ed)</h3>
+        <h1>Advanced Scratch, HTML, CSS, and Javascript. Co-ed ages 8-14. </h1></center>
+        <div style ="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+            <a id= "tuesad" href="https://thecodingspace.as.me/?appointmentType=6542209" target="_blank"><img src='http://i.imgur.com/hB3npmr.png' width='280' height='230'  /></a>
+            <a id= "thursad" href="https://thecodingspace.as.me/?appointmentType=4627395" target="_blank"><img src='http://i.imgur.com/lC5Ech1.png' width='280' height='230'  /></a>
+            <a id ="fridayad" href="https://thecodingspace.as.me/?appointmentType=4627440" target="_blank"><img src='http://i.imgur.com/ozAz11u.png' width='280' height='230'  /></a>
+            <a id="satad" href="https://thecodingspace.as.me/?appointmentType=4627470" target="_blank"><img src='http://i.imgur.com/YeBPzM9.png' width='280' height='230' /></a>
+       </div>
+    </template>
+
+ </desktop>
+</div>
+
+ <div v-else>
+<mobile>
+    <div style="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+        <a href="#begClasses"><img   style=" width:160px; height:70px" src="http://i.imgur.com/zUAKon1.png"></a>
+        <a href="#begGirlcodeClasses"> <img  style=" width:160px; height:70px" src="http://i.imgur.com/iZ8VxGa.png"></a>
+        <a href="#advGirlcodeClasses"><img style=" width:160px; height:70px" src="http://i.imgur.com/WDWKdPW.png"></a>
+        <a href="#appClasses"><img  style =" width:160px; height:70px" src="http://i.imgur.com/j7TdAv1.png"> </a>
+        <a href="#advClasses"><img  style ="  width:160px; height:70px" src="http://i.imgur.com/kqJ8Prp.png"></a>
+    </div>
+    <center> <span id="begClasses"></span>
+        <h3>Beginner Classes (co-ed)</h3>
+        <h1>Intro to Scratch. Co-ed ages 8-14.</h1>
+    </center>
+    
+    <div style="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+           <a id ="tuesday" href="https://thecodingspace.as.me/?appointmentType=4627311" target="_blank"><img src='http://i.imgur.com/DyLFQxu.png' width='280' height='230' ></a>
+            <a id ="thurs" href="https://thecodingspace.as.me/?appointmentType=4627383" target="_blank"><img src='http://i.imgur.com/N7HsrHs.png' width='280' height='230' ></a>
+            <a id = "fri" href="https://thecodingspace.as.me/?appointmentType=4627404" target="_blank"><img src='http://i.imgur.com/PRZ1JYn.png' width='280' height='230'  /></a>
+            <a id = "saturday" href="https://thecodingspace.as.me/?appointmentType=4627449" target="_blank"><img src='http://i.imgur.com/O6ByYWw.png' width='280' height='230'/></a>
+    </div>
+
+    <center> <span id="begGirlcodeClasses"> </span>
+        <h3>Beginner GirlCode Classes</h3>
+        <h1>Intro to Scratch. Girls ages 8-13.</h1>
+    </center>
+    
+    <div style="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center; flex-direction: row;">
+           <a id="mondaygc" href="https://thecodingspace.as.me/?appointmentType=4627152"  target="_blank"><img src='http://i.imgur.com/25GwOh7.png' width='280' height='230' /> </a>
+           <a id= "wednesdaygc" href="https://thecodingspace.as.me/?appointmentType=4627227"  target="_blank"><img src='http://i.imgur.com/nbyynk3.png' width='280' height='230' /> </a>
+    </div>
+
+    <center> <span id="advGirlcodeClasses"></span>
+        <h3>Advanced GirlCode Classes</h3>
+        <h1>Advanced Scratch, HTML, CSS, and Javascript. Girls ages 8-13. </h1>
+    </center>
+    
+    <div style="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+            <a id="thursdaygc" href="https://thecodingspace.as.me/?appointmentType=4627206" target="_blank"><img src='http://i.imgur.com/hrfYMT0.png' width='280' height='230'  /></a>
+            <a id= "wednesdaygc" href="https://thecodingspace.as.me/?appointmentType=4627263" target="_blank"><img src='http://i.imgur.com/NbFZaS3.png' width='280' height='230'/></a>
+    </div>
+
+    <center> <span id="advClasses"></span>
+            <h3>Advanced Classes (co-ed)</h3>
+            <h1>Advanced Scratch, HTML, CSS, and Javascript. Co-ed ages 8-14. </h1>
+    </center>
+
+    <div style="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+            <a id= "tuesad" href="https://thecodingspace.as.me/?appointmentType=6542209" target="_blank"><img src='http://i.imgur.com/hB3npmr.png' width='280' height='230'  /></a>
+            <a id= "thursad" href="https://thecodingspace.as.me/?appointmentType=4627395" target="_blank"><img src='http://i.imgur.com/lC5Ech1.png' width='280' height='230'  /></a>
+            <a id ="fridayad" href="https://thecodingspace.as.me/?appointmentType=4627440" target="_blank"><img src='http://i.imgur.com/ozAz11u.png' width='280' height='230'  /></a>
+            <a id="satad" href="https://thecodingspace.as.me/?appointmentType=4627470" target="_blank"><img src='http://i.imgur.com/YeBPzM9.png' width='280' height='230' /></a>
+    </div>
+
+</mobile>
+</div>
+</div>
+</div>
+    <script>
+        var app = new Vue({
+            // element to mount to
+            el: '#app',
+            // initial 321 data
+            data: {
+                begClasses: true,
+                begGirlcodeClasses: true,
+                advGirlcodeClasses: false,
+                advClasses: true,
+                appClasses: true,
+                allClasses: true
+            },
+            methods: {
+                isMobile() {
+                    if (window.innerWidth <= 700 && window.innerHeight <= 700) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                },
+
+                beginnerShow: function() {
+                    this.begClasses = true,
+                        this.begGirlcodeClasses = false,
+                        this.advGirlcodeClasses = false,
+                        this.advClasses = false,
+                        this.appClasses = false
+                },
+
+                begGirlCodeShow: function() {
+                    this.begClasses = false,
+                        this.begGirlcodeClasses = true,
+                        this.advGirlcodeClasses = false,
+                        this.advClasses = false,
+                        this.appClasses = false
+                },
+
+                advGirlCodeShow: function() {
+                    this.begClasses = false,
+                        this.begGirlcodeClasses = false,
+                        this.advGirlcodeClasses = true,
+                        this.advClasses = false,
+                        this.appClasses = false
+                },
+
+
+                advCodeShow: function() {
+                    this.begClasses = false,
+                        this.begGirlcodeClasses = false,
+                        this.advGirlcodeClasses = false,
+                        this.advClasses = true,
+                        this.appClasses = false
+                },
+
+                appCodeShow: function() {
+                    this.begClasses = false,
+                        this.begGirlcodeClasses = false,
+                        this.advGirlcodeClasses = false,
+                        this.advClasses = false,
+                        this.appClasses = true
+                },
+
+                showAll: function() {
+                    this.begClasses = true,
+                        this.begGirlcodeClasses = true,
+                        this.advGirlcodeClasses = true,
+                        this.advClasses = true,
+                        this.appClasses = true
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

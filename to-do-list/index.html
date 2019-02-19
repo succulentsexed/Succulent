@@ -1,0 +1,94 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Nicole's To Do List</title>
+    <style>
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            color: black;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+        }
+
+        input#enter-list {
+            padding: 30px;
+            box-shadow: none;
+            width: 300px;
+            height: 15%;
+            border-radius: 20px;
+            font-size: 25px;
+        }
+
+        #todo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #add {
+            width: 200px;
+            height: 15%;
+            border-radius: 20px;
+            font-size: 25px;
+            color: white;
+            background-color: red;
+            padding: 30px;
+        }
+
+        #show-list {
+
+            min-width: 90%;
+            min-height: 60%;
+            margin-top: 20px;
+            background-color: #fbf6b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+
+        <label>Add a new task <input v-model="newTask"/></label> <button v-on:click="addTask">Add Task </button>
+        
+        
+        <ul v-for="task in tasks">
+            <li> <input type="checkbox">{{ task.value }}</li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+            title: 'ToDo List',
+            newTask: '',
+            tasks: []
+
+        },
+        methods: {
+            addTask: function() {
+                this.tasks.push({ value: this.newTask, completed: false });
+                this.newTask = ''
+            }
+        },
+    computed: {
+      completedTasks: function () {
+        return this.tasks.filter(task => task.completed)
+      },
+      incompleteTasks: function () {
+        return this.tasks.filter(task => !task.completed)
+      }
+    }
+    })
+</script>
+
+</html>

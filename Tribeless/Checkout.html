@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <scriptsrc="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <style>
+        img {
+            flex-basis: auto;
+            margin: 10px;
+        }
+
+        img:hover {
+            opacity: .7;
+            filter: alpha(opacity=70);
+            cursor: pointer;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        h3 {
+            font-size: 2em;
+            font-family: 'Quicksand', 'Open Sans', sans-serif;
+            margin: 8px;
+            padding-top: 20px;
+        }
+
+        h1 {
+            font-size: 1em;
+            font-family: 'Quicksand', 'Open Sans', sans-serif;
+            margin: 8px;
+        }
+        button:focus {outline:0;}
+        
+        .KL-active {
+          color: white;
+          background-color: black !important;
+        }
+        
+        .Singapore-active {
+          color: white;
+          background-color: black !important;
+        }
+        
+        .fade-enter-active, .fade-leave-active {
+          transition: opacity .5s
+        }
+        .fade-enter, .fade-leave-to {
+          opacity: 0
+        }
+        
+
+        button:hover {
+          opacity: 0.75;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="app">
+ <div v-cloak>
+            <div style="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+                <button @click="KLShow()" v-bind:class="{ 'KL-active': KL_button_active_state }" name="button" style=" width: 195px; height: 40px; background-color: white; font-size: 20px; font-weight:bold; border-color: black; margin:10px">KUALA LUMPUR</button>
+                <button @click="SingaporeShow()" v-bind:class="{ 'Singapore-active': Singapore_button_active_state }" name="button" style="width: 195px; height: 40px; background-color: white; font-size: 20px; font-weight:bold;  border-color: black; margin: 10px">SINGAPORE </button>
+            </div>
+        
+    <!--<template v-if="KL">-->
+    <!--    <center> <h3 id="kualalumpur" style="font-family: 'Open Sans', sans-serif; margin:15px; color:black">Kuala Lumpur</h3>-->
+    <!--     <transition name="fade">    -->
+          
+    <!--            <div v-if="show" style ="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">-->
+    <!--                <iframe id ="iframe" src="https://app.acuityscheduling.com/schedule.php?owner=17087671&appointmentType=8928249" width="100%" height="800" frameBorder="0"></iframe>									-->
+    <!--            </div> -->
+         
+    <!--    </transition>-->
+    <!--</template>-->
+
+    <!--<template v-if="Singapore">-->
+    <!--     <center> <h3 id="singapore" style="font-family: 'Open Sans', sans-serif; margin:15px; color:black">Singapore</h3>-->
+    <!--    </center>-->
+    <!--    <transition name="fade">   -->
+            
+    <!--            <div v-if="show" style ="display: flex; flex-flow: wrap;flex-wrap: wrap; align-content: center;justify-content: center; flex-direction: row;">-->
+    <!--                <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17087671&appointmentType=8928249" width="100%" height="800" frameBorder="0"></iframe>									-->
+    <!--            </div>-->
+    
+    <!--    </transition>-->
+    <!--</template>-->
+    
+    
+     <template>
+         
+            <div v-if="KL"> 
+                <center> <h3 id="kualalumpur" style="font-family: 'Open Sans', sans-serif; margin:15px; color:black">Kuala Lumpur</h3>
+                <div style ="display: flex;flex-flow: wrap;flex-wrap: wrap;align-content: center;justify-content: center;flex-direction: row;">
+                        <iframe id ="iframe" src="https://app.acuityscheduling.com/schedule.php?owner=17087671&appointmentType=8928249" width="100%" height="800" frameBorder="0"></iframe>									
+                </div>
+            </div>
+         
+        <div v-if="Singapore"> 
+             <center> <h3 id="singapore" style="font-family: 'Open Sans', sans-serif; margin:15px; color:black">Singapore</h3></center>
+                <div style ="display: flex; flex-flow: wrap;flex-wrap: wrap; align-content: center;justify-content: center; flex-direction: row;">
+                    <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17087671&appointmentType=8928249" width="100%" height="800" frameBorder="0"></iframe>									
+                </div>
+        </div>
+        
+    </template>
+    </div>
+</div>
+</div>
+    <script>
+        var app = new Vue({
+            // element to mount to
+            el: '#app',
+            // initial 321 data
+            data: {
+                KL: true,
+                Singapore: false,
+                KL_button_active_state: false,
+                Singapore_button_active_state: false,
+                // show: true
+            },
+            methods: {
+                KLShow: function() {
+                        this.KL = true,
+                        this.Singapore = false,
+                        this.KL_button_active_state= true, 
+                        this.Singapore_button_active_state= false
+                },
+                
+                SingaporeShow: function() {
+                        this.KL = false,
+                        this.Singapore = true,
+                        this.KL_button_active_state= false, 
+                        this.Singapore_button_active_state= true
+                }
+            }
+
+        })
+        
+        
+    </script>
+    
+</body>
+
+</html>

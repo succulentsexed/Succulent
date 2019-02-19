@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <style>
+        img {
+            flex-basis: auto;
+            margin: 10px;
+        }
+
+        img:hover {
+            opacity: .7;
+            filter: alpha(opacity=70);
+            cursor: pointer;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+        
+        h3 {
+            font-size:2em;
+            font-family: 'Quicksand','Open Sans', sans-serif;
+            margin:8px;
+        }
+        
+        h1 {
+            font-size:1em;
+            font-family: 'Quicksand','Open Sans', sans-serif;
+            margin:8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div v-cloak>
+            <div style="display: flex;
+            flex-flow: wrap;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;">
+                <div v-show="big" id="beginner" v-on:click="big = !big" @click="beginnerShow()"><img style=" width:320px; height:200px" src="http://i.imgur.com/pq7Uvcf.png"></div>
+                <div v-show="!big" id="beginner-mini" @click="beginnerShow()"><img style=" width:160px; height:70px" src="http://i.imgur.com/zUAKon1.png"></div>
+                <div v-show="big" v-on:click="big = !big" @click="begGirlCodeShow()"> <img style=" width:320px; height:200px" src="http://i.imgur.com/67jqc8M.png"></div>
+                <div v-show="!big" @click="begGirlCodeShow()"> <img style=" width:160px; height:70px" src="http://i.imgur.com/iZ8VxGa.png"></div>
+                <div v-show="big" v-on:click="big = !big" @click="advGirlCodeShow()"><img style=" width:320px; height:200px" src="http://i.imgur.com/AILpOgq.png"></div>
+                <div v-show="!big" @click="advGirlCodeShow()"><img style=" width:160px; height:70px" src="http://i.imgur.com/WDWKdPW.png"></div>
+            
+                <a v-show="big" v-on:click="big = !big" @click="appCodeShow()"><img style =" width:320px; height:200px" src="http://i.imgur.com/xMQEXCI.png"></a>
+                <a v-show="!big" @click="appCodeShow()"><img style =" width:160px; height:70px" src="http://i.imgur.com/j7TdAv1.png"></a>
+                <a v-show="big" v-on:click="big = !big" @click="advCodeShow()"><img style =" width:320px; height:200px" src="http://i.imgur.com/KUo7Cij.png"></a>
+                <a v-show="!big" @click="advCodeShow()"><img style ="  width:160px; height:70px" src="http://i.imgur.com/kqJ8Prp.png"></a>
+            </div>
+            <div v-if="allClasses" style="width:100%; display: flex;
+            flex-flow: wrap;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;">
+                <a v-show="big" v-on:click="big = !big" @click="showAll()"><img style =" width:300px; height:80px" src="http://i.imgur.com/MehGazO.png"></a>
+                <a v-show="!big" @click="showAll()"><img style =" width:160px; height:70px" src="http://i.imgur.com/MehGazO.png"></a>
+
+
+            </div>
+            <template v-if="begClasses">
+                 <center> <h3>Beginner Classes (co-ed)</h3>
+                  <h1>Intro to Scratch. Co-ed ages 8-14.</h1></center>
+
+        <div style ="display: flex;
+            flex-flow: wrap;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;">
+            <a id="monday" href="https://thecodingspace.as.me/?appointmentType=4617219" target="_blank"><img src='http://i.imgur.com/E5tKiwM.png' width='280' height='230'></a>
+            <a id="tuesday" href="https://thecodingspace.as.me/?appointmentType=4617369" target="_blank"><img src='http://i.imgur.com/DyLFQxu.png' width='280' height='230' ></a>
+            <a id="wed" href="https://thecodingspace.as.me/?appointmentType=4617501" target="_blank"><img src='http://i.imgur.com/gpYWS7y.png' width='280' height='230' > </a>
+            <a id="friday" href="https://thecodingspace.as.me/?appointmentType=4617576" target="_blank"><img src='http://i.imgur.com/PRZ1JYn.png' width='280' height='230'></a>
+            <a id="saturday" href="https://thecodingspace.as.me/?appointmentType=4617624" target="_blank"><img src='http://i.imgur.com/ZM1LpRT.png' width='280' height='230'> </a>
+        </div>    
+    </template>
+
+            <template v-if="begGirlcodeClasses">
+ <center> <h3>Beginner GirlCode Classes</h3>
+  <h1>Intro to Scratch. Girls ages 8-13.</h1>
+</center>
+        <div style ="display: flex;
+            flex-flow: wrap;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;">
+                
+
+            <a id="wednesdaygc" href="https://thecodingspace.as.me/?appointmentType=4617822" target="_blank"><img src='http://i.imgur.com/nbyynk3.png' width='280' height='230'></a>
+            <a id="thursdaygc" href="https://thecodingspace.as.me/?appointmentType=4617846" target="_blank"><img src='http://i.imgur.com/lqTPhNy.png' width='280' height='230'></a>
+            <a id="saturdagc" href="https://thecodingspace.as.me/?appointmentType=4617867" target="_blank"><img src='http://i.imgur.com/hiPRh5n.png' width='280' height='230'> </a>
+        </div>
+    </template>
+            <template v-if="advGirlcodeClasses">
+ <center> <h3>Advanced GirlCode Classes</h3>
+ <h1>Advanced Scratch, HTML, CSS, and Javascript. Girls ages 8-13. </h1></center>
+         <div style ="display: flex;
+            flex-flow: wrap;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;">
+            <a id="wednesdaygc" href="https://thecodingspace.as.me/?appointmentType=4617933" target="_blank"><img src='http://i.imgur.com/NbFZaS3.png' width='280' height='230'> </a>
+            <a id="thursdaygc" href="https://thecodingspace.as.me/?appointmentType=4617972" target="_blank"><img src='http://i.imgur.com/zR2Yvqc.png' width='280' height='230'></a>
+            <a id="saturdagc" href="https://thecodingspace.as.me/?appointmentType=4618005" target="_blank"><img src='http://i.imgur.com/goeWk27.png' width='280' height='230'> </a>
+        </div>    
+    </template>
+            <template v-if="advClasses">
+                 <center> <h3>Advanced Classes (co-ed)</h3>
+                  <h1>Advanced Scratch, HTML, CSS, and Javascript. Co-ed ages 8-14. </h1></center>
+
+        <div style ="display: flex;
+            flex-flow: wrap;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;">
+            <a id="tuesad" href="https://thecodingspace.as.me/?appointmentType=4617669" target="_blank"><img src='http://i.imgur.com/hB3npmr.png' width='280' height='230'></a>
+            <a id="friad" href="https://thecodingspace.as.me/?appointmentType=4617723" target="_blank"><img src='http://i.imgur.com/ozAz11u.png' width='280' height='230'></a>
+            <a id="satad" href="https://thecodingspace.as.me/?appointmentType=4617747" target="_blank"><img src='http://i.imgur.com/DLLRwdv.png' width='280' height='230'></a>
+       </div>
+    </template>
+            <template v-if="appClasses">
+                 <center> <h3>App Design Classes (co-ed)</h3>
+                  <h1>Intro to iOS App Development in Swift. Ages 8-12. </h1></center>
+
+       <div style="width:100%; display: flex;
+            flex-flow: wrap;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            flex-direction: row;">
+            <a id="app" href="https://thecodingspace.as.me/?appointmentType=6542098" target="_blank"><img src='http://i.imgur.com/Fi3P87J.png' width='280' height='230'> </a>
+        </div>
+    </template>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            // element to mount to
+            el: '#app',
+            // initial 321 data
+            data: {
+                begClasses: false,
+                begGirlcodeClasses: false,
+                advGirlcodeClasses: false,
+                advClasses: false,
+                appClasses: false,
+                big: true,
+                allClasses: true
+            },
+            methods: {
+                beginnerShow: function() {
+                    this.begClasses = true,
+                        this.begGirlcodeClasses = false,
+                        this.advGirlcodeClasses = false,
+                        this.advClasses = false,
+                        this.appClasses = false
+                },
+
+                begGirlCodeShow: function() {
+                    this.begClasses = false,
+                        this.begGirlcodeClasses = true,
+                        this.advGirlcodeClasses = false,
+                        this.advClasses = false,
+                        this.appClasses = false
+                },
+
+                advGirlCodeShow: function() {
+                    this.begClasses = false,
+                        this.begGirlcodeClasses = false,
+                        this.advGirlcodeClasses = true,
+                        this.advClasses = false,
+                        this.appClasses = false
+                },
+
+
+                advCodeShow: function() {
+                    this.begClasses = false,
+                        this.begGirlcodeClasses = false,
+                        this.advGirlcodeClasses = false,
+                        this.advClasses = true,
+                        this.appClasses = false
+                },
+
+                appCodeShow: function() {
+                    this.begClasses = false,
+                        this.begGirlcodeClasses = false,
+                        this.advGirlcodeClasses = false,
+                        this.advClasses = false,
+                        this.appClasses = true
+                },
+
+                showAll: function() {
+                    this.begClasses = true,
+                        this.begGirlcodeClasses = true,
+                        this.advGirlcodeClasses = true,
+                        this.advClasses = true,
+                        this.appClasses = true
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

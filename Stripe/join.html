@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+   <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-64406231-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <link href="lemonaid.css" media="all" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:300italic' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+<!-- Import jQuery before InviteRobot -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+
+    <style>
+        
+        
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            body {
+                font-size: 400%;
+                margin: 4%;
+                line-height: 1.9em
+            }
+            h1 {
+                font-size: 300% !important;
+            }
+            #wordbox {
+                font-size: 300% !important;
+            }
+            #button {
+                font-size: 300% !important
+            }
+            #click-below {
+                display: none !important
+            }
+        }
+        
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 1em;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.25em;
+            background: #5CACA7;
+            color: #fff;
+            font-weight: 300;
+        }
+        
+        
+        
+    </style>
+
+</head>
+
+<title> Join </title>
+
+<body>
+
+
+
+ 
+
+        <div id="top">
+            <div id="nav">
+                <a href="http://www.lemonaid.io">
+                    <div class="logoblog"></div>
+                    <center>
+                        <div style="font-size:.75em;margin-top:none"> Lemonaid Membership for only $9 </div>
+                    </center>
+                </a>
+
+                <p>Join a support community of over 350 women from around the world. <br> To continue growing and creating this safe space, most of our members contribute a one time membership fee of $3.99. <br></p>
+
+</div>
+
+
+                <div id="shop">
+                    
+<!-- InviteRobot Widget -->
+<button data-inviterobot-trigger data-plan-id=251>Pay 9.00 USD every month</button>
+<script async src='https://app.inviterobot.com/widget/1.4.0/94162d5424b2cec3a18365c58f60b2b621cec433.js'></script>
+<!-- End InviteRobot Widget -->
+                </div>
+
+                <p>If you cannot make a membership contribution at this time, we absolutely understand! We want to ensure every woman will have equal access to this community. To join without the membership contribution, go here:</p>
+
+                <p>Thank you for supporting a community of women who want to make the world a better place. </p>
+
+
+</body>
+<script>
+    var checkoutHandler = StripeCheckout.configure({
+        key: "pk_test_ZfZq2wJ9eiqFFHruIFHPAu5x",
+        locale: "auto"
+    });
+
+    var button = document.getElementById("buttonCheckout");
+    button.addEventListener("click", function(ev) {
+        checkoutHandler.open({
+            name: "Lemonaid Donation",
+            description: "Contribution",
+            token: handleToken
+        });
+    });
+
+    function handleToken(token) {
+        fetch("/charge", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(token)
+            })
+            .then(output => {
+                if (output.status === "succeeded")
+                    document.getElementById("shop").innerHTML = "<p>Purhcase complete!</p>";
+            })
+    }
+
+    fetch("/charge", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(token)
+        })
+        .then(response => {
+            if (!response.ok)
+                throw response;
+            return response.json();
+        })
+        .then(output => {
+            console.log("Purchase succeeded:", output);
+        })
+        .catch(err => {
+            console.log("Purchase failed:", err);
+        })
+</script>
+
+</html>

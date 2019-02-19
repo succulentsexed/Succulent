@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+         
+         <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+         <script>stripe.setPublishableKey('pk_live_pTzYSAqK5okGkP0MsJaD1Yod');</script>
+         <script>function processStripeResponse(status, response){
+  var form = $('#payment-form');
+
+  if(response.error){
+    form.find('.errors').text(response.error.message);
+    form.find('button').prop('disabled', false);
+  }else{
+    var token = response.id;
+    form.append($('<input type="hidden" name="stripeToken" />').val(token));
+    form.get(0).submit();
+  }
+};
+
+$(function(){
+  $('#payment-form').submit(function(event) {
+    var form = $(this);
+    form.find('button').prop('disabled', true);
+
+    Stripe.card.createToken(form, processStripeResponse);
+
+    return false;
+  });
+});
+
+</script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+      <meta charset="utf-8">
+      <title>Stripe API</title>
+      
+<script>
+var stripe = require("stripe")(
+  "sk_live_VRXG8rfaFKLhVeow49rN6CNO"
+);
+
+</script>
+
+    </head>
+    <body>
+        <form action="/checkout.php" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_live_pTzYSAqK5okGkP0MsJaD1Yod"
+    data-amount="1000"
+    data-name="Web Development"
+    data-description="Develop a website"
+    data-image="http://mywebsite.com/img/logo.png">
+  </script>
+</form>
+      
+
+      
+     
+    </body>
+    </html>
